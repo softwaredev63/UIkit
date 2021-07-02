@@ -17,25 +17,27 @@ const rainbowAnimation = keyframes`
   }
 `;
 
-const LinkLabel = styled.div<{ isPushed: boolean }>`
-  color: ${({ theme }) => theme.colors.textSubtle};
+const LinkLabelSubSub = styled.div<{ isPushed: boolean }>`
+  color: #4c566c;
   transition: color 0.4s;
-  font: normal normal bold 16px/20px Swis721 BT;
+  font: normal normal normal 12px/37px Swis721 BT;
   flex-grow: 1;
 `;
 
-const MenuEntryHorizontal = styled.div<Props>`
+const MenuEntrySubSub = styled.div<Props>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: ${MENU_ENTRY_HEIGHT}px;
-  font: normal normal bold 20px/24px Swis721 BT;
-  padding: ${({ secondary }) => (secondary ? "0 32px" : "0 16px")};
-  font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
-  background-color: ${({ secondary, theme }) => (secondary ? theme.colors.background : "transparent")};
-  color: ${({ theme }) => theme.colors.textSubtle};
-  box-shadow: ${({ isActive, theme }) => (isActive ? `inset 0px -4px 0px #df642b` : "none")};
-  opacity: ${({ isActive }) => (isActive ? `none` : "0.5")};
+  height: 42px;
+  padding: 0 40px;
+  font: normal normal normal 12px/37px Swis721 BT;
+  color: #4c566c;
+
+  background-color: ${({ isActive }) => (isActive ? "#f0f2f8" : "transparent")};
+  outline: none;
+  box-sizing: border-box;
+  border-left: ${({ isActive }) => (isActive ? "5px solid #53a8f0" : "none")};
+  padding-left: -5px;
 
   a {
     display: flex;
@@ -45,7 +47,7 @@ const MenuEntryHorizontal = styled.div<Props>`
   }
 
   svg {
-    fill: ${({ theme }) => theme.colors.textSubtle};
+    fill: #ffffff;
   }
 
   &:hover {
@@ -63,10 +65,11 @@ const MenuEntryHorizontal = styled.div<Props>`
     font-weight: bold;
   }
 `;
-MenuEntryHorizontal.defaultProps = {
+
+MenuEntrySubSub.defaultProps = {
   secondary: false,
   isActive: false,
   role: "button",
 };
 
-export { MenuEntryHorizontal, LinkLabel };
+export { MenuEntrySubSub, LinkLabelSubSub };

@@ -1,39 +1,98 @@
 export const links = [
   {
     label: "Exchange",
-    icon: "HomeIcon",
+    icon: "ExchangeIcon",
     href: "/exchange",
+    items: [
+      {
+        label: "BNB",
+        href: "/exchange",
+        icon: "BNBIcon",
+        items: [
+          {
+            label: "2LC",
+            href: "/exchange?coin=bnb&token=2lc",
+            icon: "L2LIcon",
+          },
+          {
+            label: "BUSD",
+            href: "/exchange?coin=bnb&token=busd",
+            icon: "BUSDIcon",
+          },
+          {
+            label: "BETH",
+            href: "/exchange?coin=bnb&token=beth",
+            icon: "BETHIcon",
+          },
+        ],
+      },
+      {
+        label: "ETH",
+        href: "/exchange?coin=eth",
+        icon: "ETHIcon",
+      },
+      {
+        label: "USD",
+        href: "/exchange?coin=usd",
+        icon: "USDIcon",
+      },
+      {
+        label: "XLM",
+        href: "/exchange?coin=xlm",
+        icon: "XLMIcon",
+      },
+      {
+        label: "BTC",
+        href: "/exchange?coin=btc",
+        icon: "BTCIcon",
+      },
+    ],
   },
   {
     label: "Launch Pool",
-    icon: "TradeIcon",
+    icon: "LaunchPoolIcon",
     href: "/launch-pool",
     items: [
       {
-        label: "Exchange",
-        href: "/launch-pool/exchange",
-        icon: "TradeIcon",
+        label: "BNB",
+        href: "/launch-pool",
+        icon: "BNB2LCIcon",
       },
       {
-        label: "Liquidity",
-        href: "/launch-pool/liquidity",
+        label: "BETH",
+        href: "/launch-pool?token=beth",
+        icon: "BETH2LCIcon",
+      },
+      {
+        label: "BUSD",
+        href: "/launch-pool?token=busd",
+        icon: "BUSD2LCIcon",
       },
     ],
   },
   {
     label: "Yield Farming",
-    icon: "FarmIcon",
+    icon: "YieldFarmingIcon",
     href: "/yield-farming",
+    items: [
+      {
+        label: "BNB",
+        href: "/yield-farming",
+        icon: "BNB2LCIcon",
+      },
+    ],
   },
   {
     label: "Airdrops",
-    icon: "PoolIcon",
+    icon: "AirdropIcon",
     href: "/airdrops",
-  },
-  {
-    label: "Address Book",
-    icon: "TicketIcon",
-    href: "/address-book",
+    items: [
+      {
+        label: "2LC",
+        href: "/airdrops",
+        icon: "L2L2LCIcon",
+      },
+    ],
   },
 ];
 
@@ -108,7 +167,7 @@ export const socials = [
   },
 ];
 
-export const MENU_HEIGHT = 64;
-export const MENU_ENTRY_HEIGHT = 46;
-export const SIDEBAR_WIDTH_FULL = 240;
-export const SIDEBAR_WIDTH_REDUCED = 56;
+export const MENU_HEIGHT = 80;
+export const MENU_ENTRY_HEIGHT = 60;
+export const SIDEBAR_WIDTH_FULL = 260;
+export const SIDEBAR_WIDTH_REDUCED = 50;

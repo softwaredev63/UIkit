@@ -57,7 +57,7 @@ const Input = styled.input<InputProps>`
   }
 
   &:focus:not(:disabled) {
-    box-shadow: ${({ theme }) => theme.shadows.focus};
+    box-shadow: none;
   }
 `;
 

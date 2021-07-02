@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
 import { MENU_ENTRY_HEIGHT } from "./config";
-import { MenuEntryHorizontal, LinkLabel } from "./MenuEntryHorizontal";
+import { MenuEntry, LinkLabel } from "./MenuEntry";
+import { MenuEntrySub, LinkLabelSub } from "./MenuEntrySub";
 import { PushedProps } from "./types";
+import { ArrowDropDownIcon, ArrowDropUpIcon } from "../../components/Svg";
 
 interface Props extends PushedProps {
   label: string;
+  icon: React.ReactElement;
   initialOpenState?: boolean;
   className?: string;
-  href?: string;
 }
 
 const Container = styled.div`
@@ -19,31 +20,27 @@ const Container = styled.div`
   flex-shrink: 0;
 `;
 
+const StyledArrowDropUpIcon = styled(ArrowDropUpIcon)`
+  color: #000000;
+  fill: #000000;
+`;
+
 const AccordionContent = styled.div<{ isOpen: boolean; isPushed: boolean; maxHeight: number }>`
   max-height: ${({ isOpen, maxHeight }) => (isOpen ? `${maxHeight}px` : 0)};
   transition: max-height 0.3s ease-out;
   overflow: hidden;
-  border-color: ${({ isOpen, isPushed }) => (isOpen && isPushed ? "rgba(133, 133, 133, 0.1)" : "transparent")};
-  border-style: solid;
-  border-width: 1px;
 `;
 
-const AccordionHorizontal: React.FC<Props> = ({
+const SideBarSubAndSubMenu: React.FC<Props> = ({
   label,
+  icon,
   isPushed,
   pushNav,
-  initialOpenState = false,
+  initialOpenState = true,
   children,
   className,
-  href,
 }) => {
-  const location = useLocation();
   const [isOpen, setIsOpen] = useState(initialOpenState);
-
-  let link = "";
-  if (href) {
-    link = href;
-  }
 
   const handleClick = () => {
     if (isPushed) {
@@ -56,14 +53,20 @@ const AccordionHorizontal: React.FC<Props> = ({
 
   return (
     <Container>
-      <MenuEntryHorizontal onClick={handleClick} isActive={location.pathname.includes(link)} className={className}>
-        <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
-      </MenuEntryHorizontal>
-      <AccordionContent isOpen={isOpen} isPushed={false} maxHeight={React.Children.count(children) * MENU_ENTRY_HEIGHT}>
+      <MenuEntrySub onClick={handleClick} className={className}>
+        {icon}
+        <LinkLabelSub isPushed={isPushed}>{label}</LinkLabelSub>
+        {isOpen ? <ArrowDropUpIcon width="30px" /> : <ArrowDropDownIcon width="30px" />}
+      </MenuEntrySub>
+      <AccordionContent
+        isOpen={isOpen}
+        isPushed={isPushed}
+        maxHeight={React.Children.count(children) * MENU_ENTRY_HEIGHT}
+      >
         {children}
       </AccordionContent>
     </Container>
   );
 };
 
-export default AccordionHorizontal;
+export default SideBarSubAndSubMenu;

@@ -8,7 +8,9 @@ const StyledButton = styled(Button)`
   background: transparent linear-gradient(180deg, #53a8f0 0%, #2d7fc4 100%) 0% 0% no-repeat padding-box;
   border-radius: 12px;
   font: normal normal bold 16px/6px Swis721 BT;
+  color: white;
   height: 46px;
+  margin-right: 20px;
 `;
 
 interface Props {

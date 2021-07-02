@@ -26,7 +26,16 @@ export interface NavTheme {
 export interface MenuSubEntry {
   label: string;
   href: string;
-  icon?: string;
+  icon: string;
+  items?: MenuSubSubEntry[];
+  calloutClass?: string;
+  initialOpenState?: boolean;
+}
+
+export interface MenuSubSubEntry {
+  label: string;
+  href: string;
+  icon: string;
   calloutClass?: string;
 }
 

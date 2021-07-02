@@ -5,8 +5,8 @@ import Overlay from "../../components/Overlay/Overlay";
 import { Flex } from "../../components/Flex";
 import { useMatchBreakpoints } from "../../hooks";
 import Logo from "./Logo";
-import Panel from "./Panel";
-import PanelHorizontal from "./PanelHorizontal";
+import SideBar from "./SideBar";
+import NavBar from "./NavBar";
 import UserBlock from "./UserBlock";
 import { NavProps } from "./types";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
@@ -46,7 +46,7 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   transition: margin-top 0.2s;
   transform: translate3d(0, 0, 0);
   ${({ theme }) => theme.mediaQueries.nav} {
-    margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
+    margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL + 20 : SIDEBAR_WIDTH_REDUCED + 20}px`};
   }
 `;
 
@@ -121,27 +121,29 @@ const Menu: React.FC<NavProps> = ({
           isDark={isDark}
           href={homeLink?.href ?? "/"}
         />
-        <PanelHorizontal
-          isPushed={isPushed}
-          isMobile={isMobile}
-          showMenu={showMenu}
-          isDark={isDark}
-          toggleTheme={toggleTheme}
-          langs={langs}
-          setLang={setLang}
-          currentLang={currentLang}
-          cakePriceUsd={cakePriceUsd}
-          pushNav={setIsPushed}
-          links={links}
-          priceLink={priceLink}
-        />
+        {!isMobile && (
+          <NavBar
+            isPushed={isPushed}
+            isMobile={isMobile}
+            showMenu={showMenu}
+            isDark={isDark}
+            toggleTheme={toggleTheme}
+            langs={langs}
+            setLang={setLang}
+            currentLang={currentLang}
+            cakePriceUsd={cakePriceUsd}
+            pushNav={setIsPushed}
+            links={links}
+            priceLink={priceLink}
+          />
+        )}
         <Flex>
           <UserBlock account={account} login={login} logout={logout} />
           {profile && <Avatar profile={profile} />}
         </Flex>
       </StyledNav>
       <BodyWrapper>
-        <Panel
+        <SideBar
           isPushed={isPushed}
           isMobile={isMobile}
           showMenu={showMenu}

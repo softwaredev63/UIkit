@@ -20,6 +20,7 @@ const rainbowAnimation = keyframes`
 const LinkLabelSub = styled.div<{ isPushed: boolean }>`
   color: #4c566c;
   transition: color 0.4s;
+  font: normal normal normal 12px/37px Swis721 BT;
   flex-grow: 1;
 `;
 
@@ -27,9 +28,9 @@ const MenuEntrySub = styled.div<Props>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: ${MENU_ENTRY_HEIGHT}px;
+  height: 42px;
   font: normal normal bold 20px/24px Swis721 BT;
-  padding: ${({ secondary }) => (secondary ? "0 32px" : "0 16px")};
+  padding: 0 24px;
   font: normal normal normal 12px/37px Swis721 BT;
   color: #4c566c;
 

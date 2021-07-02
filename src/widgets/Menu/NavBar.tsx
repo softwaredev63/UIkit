@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import PanelBodyHorizontal from "./PanelBodyHorizontal";
+import NavBarBody from "./NavBarBody";
 import PanelFooter from "./PanelFooter";
 import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
 import { PanelProps, PushedProps } from "./types";
@@ -16,20 +16,20 @@ const StyledPanel = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   display: flex;
   justify-content: space-between;
   flex-shrink: 0;
-  height: 52px;
+  height: 66px;
   transition: padding-top 0.2s, width 0.2s;
   z-index: 11;
   overflow: ${({ isPushed }) => (isPushed ? "initial" : "hidden")};
   transform: translate3d(0, 0, 0);
 `;
 
-const PanelHorizontal: React.FC<Props> = (props) => {
+const NavBar: React.FC<Props> = (props) => {
   const { isPushed, showMenu } = props;
   return (
     <StyledPanel isPushed={isPushed} showMenu={showMenu}>
-      <PanelBodyHorizontal {...props} />
+      <NavBarBody {...props} />
     </StyledPanel>
   );
 };
 
-export default PanelHorizontal;
+export default NavBar;

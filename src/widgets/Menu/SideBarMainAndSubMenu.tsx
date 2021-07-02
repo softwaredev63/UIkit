@@ -25,12 +25,12 @@ const AccordionContent = styled.div<{ isOpen: boolean; isPushed: boolean; maxHei
   overflow: hidden;
 `;
 
-const Accordion: React.FC<Props> = ({
+const SideBarMainAndSubMenu: React.FC<Props> = ({
   label,
   icon,
   isPushed,
   pushNav,
-  initialOpenState = false,
+  initialOpenState = true,
   children,
   className,
 }) => {
@@ -50,7 +50,7 @@ const Accordion: React.FC<Props> = ({
       <MenuEntry onClick={handleClick} className={className}>
         {icon}
         <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
-        {isOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+        {isOpen ? <ArrowDropUpIcon width="30px" /> : <ArrowDropDownIcon width="30px" />}
       </MenuEntry>
       <AccordionContent
         isOpen={isOpen}
@@ -63,4 +63,4 @@ const Accordion: React.FC<Props> = ({
   );
 };
 
-export default Accordion;
+export default SideBarMainAndSubMenu;

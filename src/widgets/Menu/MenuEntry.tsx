@@ -20,14 +20,16 @@ const rainbowAnimation = keyframes`
 const LinkLabel = styled.div<{ isPushed: boolean }>`
   color: #ffffff;
   transition: color 0.4s;
+  font: normal normal bold 14px/18px Swis721 BT;
   flex-grow: 1;
+  margin-left: 10px;
 `;
 
 const MenuEntry = styled.div<Props>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  height: ${MENU_ENTRY_HEIGHT}px;
+  height: 42px;
   font: normal normal bold 20px/24px Swis721 BT;
   padding: ${({ secondary }) => (secondary ? "0 32px" : "0 16px")};
   font-size: ${({ secondary }) => (secondary ? "14px" : "16px")};
