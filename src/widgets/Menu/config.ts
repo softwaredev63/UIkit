@@ -26,58 +26,58 @@ export const links = [
           },
         ],
       },
-      {
-        label: "ETH",
-        href: "/exchange?coin=eth",
-        icon: "ETHIcon",
-      },
-      {
-        label: "USD",
-        href: "/exchange?coin=usd",
-        icon: "USDIcon",
-      },
-      {
-        label: "XLM",
-        href: "/exchange?coin=xlm",
-        icon: "XLMIcon",
-      },
-      {
-        label: "BTC",
-        href: "/exchange?coin=btc",
-        icon: "BTCIcon",
-      },
+      // {
+      //   label: "ETH",
+      //   href: "/exchange?coin=eth",
+      //   icon: "ETHIcon",
+      // },
+      // {
+      //   label: "USD",
+      //   href: "/exchange?coin=usd",
+      //   icon: "USDIcon",
+      // },
+      // {
+      //   label: "XLM",
+      //   href: "/exchange?coin=xlm",
+      //   icon: "XLMIcon",
+      // },
+      // {
+      //   label: "BTC",
+      //   href: "/exchange?coin=btc",
+      //   icon: "BTCIcon",
+      // },
     ],
   },
   {
-    label: "Launch Pool",
+    label: "Pools",
     icon: "LaunchPoolIcon",
-    href: "/launch-pool",
+    href: "/pools",
     items: [
       {
-        label: "BNB",
-        href: "/launch-pool",
+        label: "Yield Farming",
+        href: "/pools?type=yield",
         icon: "BNB2LCIcon",
       },
       {
-        label: "BETH",
-        href: "/launch-pool?token=beth",
+        label: "Trading Pools",
+        href: "/pools?type=trading",
         icon: "BETH2LCIcon",
       },
       {
-        label: "BUSD",
-        href: "/launch-pool?token=busd",
+        label: "Staking Pools",
+        href: "/pools?type=staking",
         icon: "BUSD2LCIcon",
       },
     ],
   },
   {
-    label: "Yield Farming",
+    label: "Dapps",
     icon: "YieldFarmingIcon",
     href: "/yield-farming",
     items: [
       {
-        label: "BNB",
-        href: "/yield-farming",
+        label: "Multi-send",
+        href: "/dapps?type=multisend",
         icon: "BNB2LCIcon",
       },
     ],
@@ -88,9 +88,21 @@ export const links = [
     href: "/airdrops",
     items: [
       {
-        label: "2LC",
+        label: "2LC 2local",
         href: "/airdrops",
         icon: "L2L2LCIcon",
+      },
+    ],
+  },
+  {
+    label: "NFT",
+    icon: "DiamondMenuIcon",
+    href: "/airdrops",
+    items: [
+      {
+        label: "2LC 2local",
+        href: "/airdrops",
+        icon: "DiamondIcon",
       },
     ],
   },

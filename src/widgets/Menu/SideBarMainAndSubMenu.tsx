@@ -20,8 +20,6 @@ const Container = styled.div`
 `;
 
 const AccordionContent = styled.div<{ isOpen: boolean; isPushed: boolean; maxHeight: number }>`
-  max-height: ${({ isOpen, maxHeight }) => (isOpen ? `${maxHeight}px` : 0)};
-  transition: max-height 0.3s ease-out;
   overflow: hidden;
 `;
 
