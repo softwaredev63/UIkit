@@ -20,6 +20,8 @@ const Container = styled.div`
 `;
 
 const AccordionContent = styled.div<{ isOpen: boolean; isPushed: boolean; maxHeight: number }>`
+  max-height: ${({ isOpen, maxHeight }) => (isOpen ? `${maxHeight}px` : 0)};
+  transition: max-height 0.3s ease-out;
   overflow: hidden;
 `;
 
@@ -50,11 +52,7 @@ const SideBarMainAndSubMenu: React.FC<Props> = ({
         <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
         {isOpen ? <ArrowDropUpIcon width="30px" /> : <ArrowDropDownIcon width="30px" />}
       </MenuEntry>
-      <AccordionContent
-        isOpen={isOpen}
-        isPushed={isPushed}
-        maxHeight={React.Children.count(children) * MENU_ENTRY_HEIGHT}
-      >
+      <AccordionContent isOpen={isOpen} isPushed={isPushed} maxHeight={400}>
         {children}
       </AccordionContent>
     </Container>
