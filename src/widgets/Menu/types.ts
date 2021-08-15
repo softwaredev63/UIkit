@@ -30,6 +30,7 @@ export interface MenuSubEntry {
   items?: MenuSubSubEntry[];
   calloutClass?: string;
   initialOpenState?: boolean;
+  disabled?: boolean;
 }
 
 export interface MenuSubSubEntry {
@@ -37,6 +38,7 @@ export interface MenuSubSubEntry {
   href: string;
   icon: string;
   calloutClass?: string;
+  disabled?: boolean;
 }
 
 export interface MenuEntry {

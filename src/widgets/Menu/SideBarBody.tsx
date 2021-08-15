@@ -83,6 +83,7 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) =>
                               secondary
                               isActive={subItem.href === location.pathname}
                               onClick={handleClick}
+                              disabled={subItem.disabled}
                             >
                               <MenuLink href={subItem.href}>
                                 {iconElementSubSub}
@@ -100,6 +101,7 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) =>
                       secondary
                       isActive={item.href === location.pathname}
                       onClick={handleClick}
+                      disabled={item.disabled}
                     >
                       <MenuLink href={item.href}>
                         {iconElementSub}

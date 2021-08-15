@@ -5,6 +5,7 @@ export interface Props {
   secondary?: boolean;
   isActive?: boolean;
   theme: DefaultTheme;
+  disabled?: boolean;
 }
 
 const rainbowAnimation = keyframes`
@@ -33,6 +34,8 @@ const MenuEntrySub = styled.div<Props>`
   padding: 0 24px;
   font: normal normal normal 12px/37px Swis721 BT;
   color: #4c566c;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "unset")};
+  opacity: ${({ disabled }) => (disabled ? 0.7 : 1)};
 
   a {
     display: flex;
