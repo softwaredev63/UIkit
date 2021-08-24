@@ -13,6 +13,16 @@ const StyledButton = styled(Button)`
   margin-right: 20px;
 `;
 
+const StyledLink = styled.a`
+  background: transparent linear-gradient(180deg, #53a8f0 0%, #2d7fc4 100%) 0% 0% no-repeat padding-box;
+  border-radius: 12px;
+  font: normal normal bold 16px/6px Swis721 BT;
+  color: white;
+  height: 46px;
+  margin-right: 20px;
+  padding: 14px;
+`;
+
 interface Props {
   account?: string;
   login: Login;
@@ -24,6 +34,11 @@ const UserBlock: React.FC<Props> = ({ account, login, logout }) => {
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null;
   return (
     <div>
+      <StyledLink
+        href="#"
+      >
+        Buy Token
+      </StyledLink>
       {account ? (
         <StyledButton
           size="sm"

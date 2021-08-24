@@ -1,4 +1,4 @@
-Pancake UIkit is a set of React components and hooks used to build pages on Pancake's apps. It also contains a theme file for dark and light mode.
+UIkit is a set of React components and hooks used to build pages on 2local's apps. It also contains a theme file for dark and light mode.
 
 ## test
 
