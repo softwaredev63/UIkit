@@ -63,6 +63,7 @@ const Menu: React.FC<NavProps> = ({
   account,
   login,
   logout,
+  onBuyCryptoWithSimplex,
   isDark,
   toggleTheme,
   langs,
@@ -122,7 +123,7 @@ const Menu: React.FC<NavProps> = ({
           href={homeLink?.href ?? "/"}
         />
         <Flex>
-          <UserBlock account={account} login={login} logout={logout} />
+          <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} />
           {profile && <Avatar profile={profile} />}
         </Flex>
       </StyledNav>

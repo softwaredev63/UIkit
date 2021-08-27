@@ -27,18 +27,23 @@ interface Props {
   account?: string;
   login: Login;
   logout: () => void;
+  onBuyCryptoWithSimplex: () => void;
 }
 
-const UserBlock: React.FC<Props> = ({ account, login, logout }) => {
+const UserBlock: React.FC<Props> = ({ account, login, logout, onBuyCryptoWithSimplex }) => {
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(login, logout, account);
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null;
   return (
     <div>
-      <StyledLink
-        href="#"
+      <StyledButton
+          size="sm"
+          variant="tertiary"
+          onClick={() => {
+            onBuyCryptoWithSimplex();
+          }}
       >
-        Buy Token
-      </StyledLink>
+        Buy Crypto
+      </StyledButton>
       {account ? (
         <StyledButton
           size="sm"
