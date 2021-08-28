@@ -38,6 +38,8 @@ export { default as ETHIcon } from "./ETH";
 export { default as USDIcon } from "./USD";
 export { default as XLMIcon } from "./XLM";
 export { default as BTCIcon } from "./BTC";
+export { default as UNIIcon } from "./UNI";
+export { default as CAKEIcon } from "./CAKE";
 export { default as BNB2LCIcon } from "./BNB2LC";
 export { default as BETH2LCIcon } from "./BETH2LC";
 export { default as BUSD2LCIcon } from "./BUSD2LC";

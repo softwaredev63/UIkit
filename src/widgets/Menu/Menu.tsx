@@ -120,7 +120,7 @@ const Menu: React.FC<NavProps> = ({
           isPushed={isPushed}
           togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
           isDark={isDark}
-          href={homeLink?.href ?? "/"}
+          href={homeLink?.href ?? "https://2local.io/"}
         />
         <Flex>
           <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} />
