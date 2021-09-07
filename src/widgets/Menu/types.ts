@@ -31,6 +31,8 @@ export interface MenuSubEntry {
   calloutClass?: string;
   initialOpenState?: boolean;
   disabled?: boolean;
+  balance?: number;
+  price?: number;
 }
 
 export interface MenuSubSubEntry {
@@ -39,6 +41,8 @@ export interface MenuSubSubEntry {
   icon: string;
   calloutClass?: string;
   disabled?: boolean;
+  balance?: number;
+  price?: number;
 }
 
 export interface MenuEntry {
@@ -67,4 +71,5 @@ export interface NavProps extends PanelProps {
   profile?: Profile;
   logout: () => void;
   onBuyCryptoWithSimplex: () => void;
+  showBalancePanel?: boolean;
 }

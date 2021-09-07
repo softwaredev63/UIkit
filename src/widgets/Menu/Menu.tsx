@@ -9,7 +9,7 @@ import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import UserBlock from "./UserBlock";
 import { NavProps } from "./types";
-import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
+import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE } from "./config";
 import Avatar from "./Avatar";
 
 const Wrapper = styled.div`
@@ -40,13 +40,13 @@ const BodyWrapper = styled.div`
   display: flex;
 `;
 
-const Inner = styled.div<{ isPushed: boolean; showMenu: boolean }>`
+const Inner = styled.div<{ isPushed: boolean; showMenu: boolean, showBalance: boolean }>`
   flex-grow: 1;
   margin-top: ${({ showMenu }) => (showMenu ? `${MENU_HEIGHT}px` : 0)};
   transition: margin-top 0.2s;
   transform: translate3d(0, 0, 0);
   ${({ theme }) => theme.mediaQueries.nav} {
-    margin-left: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL + 20 : SIDEBAR_WIDTH_REDUCED + 20}px`};
+    margin-left: ${({ isPushed, showBalance }) => `${isPushed ? (showBalance ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE) + 20 : SIDEBAR_WIDTH_REDUCED + 20}px`};
   }
 `;
 
@@ -74,12 +74,15 @@ const Menu: React.FC<NavProps> = ({
   priceLink,
   profile,
   children,
+  showBalancePanel = false
 }) => {
   const { isXl } = useMatchBreakpoints();
   const isMobile = isXl === false;
   const [isPushed, setIsPushed] = useState(!isMobile);
   const [showMenu, setShowMenu] = useState(true);
   const refPrevOffset = useRef(window.pageYOffset);
+
+  const showBalance = showBalancePanel
 
   useEffect(() => {
     const handleScroll = () => {
@@ -141,8 +144,9 @@ const Menu: React.FC<NavProps> = ({
           pushNav={setIsPushed}
           links={links}
           priceLink={priceLink}
+          showBalance={showBalance}
         />
-        <Inner isPushed={isPushed} showMenu={showMenu}>
+        <Inner isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
           {children}
         </Inner>
         <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />

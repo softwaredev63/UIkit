@@ -1,11 +1,12 @@
 import styled, { keyframes, DefaultTheme } from "styled-components";
-import { MENU_ENTRY_HEIGHT } from "./config";
+import { MENU_ENTRY_HEIGHT, SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE } from "./config";
 
 export interface Props {
   secondary?: boolean;
   isActive?: boolean;
   theme: DefaultTheme;
   disabled?: boolean;
+  showBalance?: boolean;
 }
 
 const rainbowAnimation = keyframes`
@@ -26,11 +27,11 @@ const LinkLabelSub = styled.div<{ isPushed: boolean }>`
 `;
 
 const MenuEntrySub = styled.div<Props>`
+  width: ${({ showBalance }) => (showBalance ? `${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE}px` : "100%")};
   cursor: pointer;
   display: flex;
   align-items: center;
   height: 42px;
-  font: normal normal bold 20px/24px Swis721 BT;
   padding: 0 24px;
   font: normal normal normal 12px/37px Swis721 BT;
   color: #4c566c;

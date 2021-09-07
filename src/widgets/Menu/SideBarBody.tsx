@@ -10,9 +10,11 @@ import { MenuEntrySubSub, LinkLabelSubSub } from "./MenuEntrySubSub";
 import MenuLink from "./MenuLink";
 import { PanelProps, PushedProps } from "./types";
 import SideBarSubAndSubMenu from "./SideBarSubAndSubMenu";
+import BalanceContent from "./BalanceContent";
 
 interface Props extends PanelProps, PushedProps {
   isMobile: boolean;
+  showBalance: boolean;
 }
 
 const Icons = (IconModule as unknown) as { [key: string]: React.FC<SvgProps> };
@@ -25,7 +27,7 @@ const Container = styled.div`
   height: 100%;
 `;
 
-const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) => {
+const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, showBalance }) => {
   const location = useLocation();
 
   // Close the menu when a user clicks a link on mobile
@@ -43,6 +45,7 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) =>
             <SideBarMainAndSubMenu
               key={entry.label}
               isPushed={isPushed}
+              showBalance={showBalance}
               pushNav={pushNav}
               icon={iconElement}
               label={entry.label}
@@ -59,6 +62,9 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) =>
                       <SideBarSubAndSubMenu
                         key={item.label}
                         isPushed={isPushed}
+                        showBalance={showBalance}
+                        balance={item.balance}
+                        price={item.price}
                         pushNav={pushNav}
                         icon={iconElementSub}
                         label={item.label}
@@ -69,17 +75,10 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) =>
                           const IconSubSub = Icons[subItem.icon];
                           const iconElementSubSub = <IconSubSub width="20px" mr="8px" />;
                           const itemSubCalloutClass = item.calloutClass ? item.calloutClass : undefined;
-
-                          console.log(
-                            "pooh, subItem.href ==",
-                            subItem.href,
-                            " location.pathname = ",
-                            location.pathname
-                          );
-
                           return (
                             <MenuEntrySubSub
                               key={subItem.href}
+                              showBalance={showBalance}
                               secondary
                               isActive={subItem.href === location.pathname}
                               onClick={handleClick}
@@ -87,7 +86,8 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) =>
                             >
                               <MenuLink href={subItem.href}>
                                 {iconElementSubSub}
-                                <LinkLabelSub isPushed={isPushed}> {subItem.label}</LinkLabelSub>
+                                <LinkLabelSub isPushed={isPushed}>{subItem.label}</LinkLabelSub>
+                                {showBalance && <BalanceContent balance={subItem.balance} price={subItem.price}/>}
                               </MenuLink>
                             </MenuEntrySubSub>
                           );
@@ -98,6 +98,7 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links }) =>
                   return (
                     <MenuEntrySub
                       key={item.href}
+                      showBalance={showBalance}
                       secondary
                       isActive={item.href === location.pathname}
                       onClick={handleClick}

@@ -10,6 +10,7 @@ interface Props extends PushedProps {
   icon: React.ReactElement;
   initialOpenState?: boolean;
   className?: string;
+  showBalance: boolean;
 }
 
 const Container = styled.div`
@@ -33,6 +34,7 @@ const SideBarMainAndSubMenu: React.FC<Props> = ({
   initialOpenState = true,
   children,
   className,
+  showBalance,
 }) => {
   const [isOpen, setIsOpen] = useState(initialOpenState);
 
@@ -47,7 +49,7 @@ const SideBarMainAndSubMenu: React.FC<Props> = ({
 
   return (
     <Container>
-      <MenuEntry onClick={handleClick} className={className}>
+      <MenuEntry onClick={handleClick} className={className} showBalance={showBalance} >
         {icon}
         <LinkLabel isPushed={isPushed}>{label}</LinkLabel>
         {isOpen ? <ArrowDropUpIcon width="30px" /> : <ArrowDropDownIcon width="30px" />}

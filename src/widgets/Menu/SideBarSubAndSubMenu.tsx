@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { MENU_ENTRY_HEIGHT } from "./config";
 import { MenuEntry, LinkLabel } from "./MenuEntry";
 import { MenuEntrySub, LinkLabelSub } from "./MenuEntrySub";
+import BalanceContent from "./BalanceContent";
 import { PushedProps } from "./types";
 import { ArrowDropDownIcon, ArrowDropUpIcon } from "../../components/Svg";
 
@@ -11,11 +12,21 @@ interface Props extends PushedProps {
   icon: React.ReactElement;
   initialOpenState?: boolean;
   className?: string;
+  showBalance?: boolean;
+  balance?: number;
+  price?: number;
 }
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  // Safari fix
+  flex-shrink: 0;
+`;
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   // Safari fix
   flex-shrink: 0;
 `;
@@ -39,6 +50,9 @@ const SideBarSubAndSubMenu: React.FC<Props> = ({
   initialOpenState = true,
   children,
   className,
+  showBalance = false,
+  balance,
+  price,
 }) => {
   const [isOpen, setIsOpen] = useState(initialOpenState);
 
@@ -53,11 +67,14 @@ const SideBarSubAndSubMenu: React.FC<Props> = ({
 
   return (
     <Container>
-      <MenuEntrySub onClick={handleClick} className={className}>
-        {icon}
-        <LinkLabelSub isPushed={isPushed}>{label}</LinkLabelSub>
-        {isOpen ? <ArrowDropUpIcon width="30px" /> : <ArrowDropDownIcon width="30px" />}
-      </MenuEntrySub>
+      <MainContainer>
+        <MenuEntrySub onClick={handleClick} className={className} showBalance={showBalance}>
+          {icon}
+          <LinkLabelSub isPushed={isPushed}>{label}</LinkLabelSub>
+          {isOpen ? <ArrowDropUpIcon width="30px" /> : <ArrowDropDownIcon width="30px" />}      
+        </MenuEntrySub>
+        {showBalance && <BalanceContent balance={balance} price={price} />}
+      </MainContainer>
       <AccordionContent
         isOpen={isOpen}
         isPushed={isPushed}

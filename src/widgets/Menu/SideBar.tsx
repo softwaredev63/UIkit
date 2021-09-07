@@ -2,15 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import SideBarBody from "./SideBarBody";
 import PanelFooter from "./PanelFooter";
-import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config";
+import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE } from "./config";
 import { PanelProps, PushedProps } from "./types";
 
 interface Props extends PanelProps, PushedProps {
   showMenu: boolean;
   isMobile: boolean;
+  showBalance: boolean;
 }
 
-const StyledSideBar = styled.div<{ isPushed: boolean; showMenu: boolean }>`
+const StyledSideBar = styled.div<{ isPushed: boolean; showMenu: boolean, showBalance: boolean }>`
   position: fixed;
   padding-top: ${({ showMenu }) => (showMenu ? "120px" : 0)};
   top: 0;
@@ -20,7 +21,7 @@ const StyledSideBar = styled.div<{ isPushed: boolean; showMenu: boolean }>`
   justify-content: space-between;
   flex-shrink: 0;
   background-color: ${({ theme }) => theme.nav.background};
-  width: ${({ isPushed }) => (isPushed ? `${SIDEBAR_WIDTH_FULL}px` : 0)};
+  width: ${({ isPushed, showBalance }) => (isPushed ? (showBalance ? `${SIDEBAR_WIDTH_FULL}px` : `${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE}px`) : 0)};
   height: 100vh;
   transition: padding-top 0.2s, width 0.2s;
   border-right: ${({ isPushed }) => (isPushed ? "2px solid rgba(133, 133, 133, 0.1)" : 0)};
@@ -30,15 +31,15 @@ const StyledSideBar = styled.div<{ isPushed: boolean; showMenu: boolean }>`
 
   ${({ theme }) => theme.mediaQueries.nav} {
     border-right: 2px solid rgba(133, 133, 133, 0.1);
-    width: ${({ isPushed }) => `${isPushed ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_REDUCED}px`};
+    width: ${({ isPushed, showBalance }) => `${isPushed ? (showBalance ? `${SIDEBAR_WIDTH_FULL}px` : `${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE}px`) : SIDEBAR_WIDTH_REDUCED}px`};
     margin-left: 20px;
   }
 `;
 
 const SideBar: React.FC<Props> = (props) => {
-  const { isPushed, showMenu } = props;
+  const { isPushed, showMenu, showBalance } = props;
   return (
-    <StyledSideBar isPushed={isPushed} showMenu={showMenu}>
+    <StyledSideBar isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
       <SideBarBody {...props} />
     </StyledSideBar>
   );
