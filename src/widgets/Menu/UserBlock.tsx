@@ -64,6 +64,12 @@ const UserBlock: React.FC<Props> = ({ account, login, logout, onBuyCryptoWithSim
           Connect Wallet
         </StyledButton>
       )}
+      <StyledLink
+        href="https://sec.2local.io/login"
+        target="_blank"
+      >
+        Account
+      </StyledLink>
     </div>
   );
 };
