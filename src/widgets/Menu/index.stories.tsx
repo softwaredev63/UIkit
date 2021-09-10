@@ -32,6 +32,9 @@ export const Connected: React.FC = () => {
         cakePriceUsd={0.23158668932877668}
         links={links}
         profile={null}
+        showBalancePanel={true}
+        showBalanceContol={true}
+        totalCost={5320}
       >
         <div>
           <Heading as="h1" mb="8px">

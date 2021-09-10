@@ -13,6 +13,8 @@ export const links = [
             label: "2LC",
             href: "/exchange?coin=bnb&token=2lc",
             icon: "L2LIcon",
+            balance: 0.233,
+            cost: 12331,
           },
           {
             label: "BUSD",

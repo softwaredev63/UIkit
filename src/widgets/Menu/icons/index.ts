@@ -45,3 +45,5 @@ export { default as BETH2LCIcon } from "./BETH2LC";
 export { default as BUSD2LCIcon } from "./BUSD2LC";
 export { default as L2L2LCIcon } from "./2LC2LC";
 export { default as DiamondIcon } from "./Diamond";
+export { default as HideIcon } from "./Hide";
+export { default as ShowIcon } from "./Show";

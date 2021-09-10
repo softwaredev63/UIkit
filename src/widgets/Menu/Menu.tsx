@@ -74,15 +74,20 @@ const Menu: React.FC<NavProps> = ({
   priceLink,
   profile,
   children,
-  showBalancePanel = false
+  showBalancePanel = false,
+  showBalanceContol = false,
+  totalCost = 0,
 }) => {
   const { isXl } = useMatchBreakpoints();
   const isMobile = isXl === false;
   const [isPushed, setIsPushed] = useState(!isMobile);
   const [showMenu, setShowMenu] = useState(true);
+  const [showBalance, setShowBalance] = useState(showBalancePanel);
   const refPrevOffset = useRef(window.pageYOffset);
 
-  const showBalance = showBalancePanel
+  const toggleBalance = () => {
+    setShowBalance(!showBalance)
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -145,6 +150,9 @@ const Menu: React.FC<NavProps> = ({
           links={links}
           priceLink={priceLink}
           showBalance={showBalance}
+          totalCost={totalCost}
+          toggleBalance={toggleBalance}
+          showBalanceContol={showBalanceContol}
         />
         <Inner isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
           {children}

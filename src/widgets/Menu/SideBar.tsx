@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SideBarBody from "./SideBarBody";
 import PanelFooter from "./PanelFooter";
+import BalanceControl from "./BalanceControl";
 import { SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE } from "./config";
 import { PanelProps, PushedProps } from "./types";
 
@@ -9,6 +10,9 @@ interface Props extends PanelProps, PushedProps {
   showMenu: boolean;
   isMobile: boolean;
   showBalance: boolean;
+  totalCost: number;
+  toggleBalance: () => void;
+  showBalanceContol: boolean;
 }
 
 const StyledSideBar = styled.div<{ isPushed: boolean; showMenu: boolean, showBalance: boolean }>`
@@ -37,9 +41,10 @@ const StyledSideBar = styled.div<{ isPushed: boolean; showMenu: boolean, showBal
 `;
 
 const SideBar: React.FC<Props> = (props) => {
-  const { isPushed, showMenu, showBalance } = props;
+  const { isPushed, showMenu, showBalance, showBalanceContol, toggleBalance, totalCost } = props;
   return (
     <StyledSideBar isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
+      { showBalanceContol && <BalanceControl show={showBalance} totalCost={totalCost} toggleBalance={toggleBalance}/> }
       <SideBarBody {...props} />
     </StyledSideBar>
   );

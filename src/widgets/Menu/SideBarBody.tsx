@@ -64,7 +64,7 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, show
                         isPushed={isPushed}
                         showBalance={showBalance}
                         balance={item.balance}
-                        price={item.price}
+                        cost={item.cost}
                         pushNav={pushNav}
                         icon={iconElementSub}
                         label={item.label}
@@ -87,7 +87,7 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, show
                               <MenuLink href={subItem.href}>
                                 {iconElementSubSub}
                                 <LinkLabelSub isPushed={isPushed}>{subItem.label}</LinkLabelSub>
-                                {showBalance && <BalanceContent balance={subItem.balance} price={subItem.price}/>}
+                                {showBalance && <BalanceContent balance={subItem.balance} cost={subItem.cost}/>}
                               </MenuLink>
                             </MenuEntrySubSub>
                           );
