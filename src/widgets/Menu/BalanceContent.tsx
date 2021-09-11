@@ -23,6 +23,8 @@ const Balance = styled.div`
   color: #4C566C;
   font-size: 15px;
   opacity: 1;
+  width: 50%;
+  text-align: right;
 `;
 
 const Cost = styled.div`
@@ -31,6 +33,8 @@ const Cost = styled.div`
   color: #4C566C;
   font-size: 15px;
   opacity: 0.5;
+  width: 50%;
+  text-align: right;
 `;
 
 const BalanceContent: React.FC<Props> = ({ balance = 0, cost = 0 }) => {
