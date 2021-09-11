@@ -12,7 +12,7 @@ interface Props {
 }
 
 const BalanceArea = styled.div`
-  width: 170px;
+  width: 140px;
   margin: auto 10px;
   display: flex;
   flex-direction: row;
@@ -37,7 +37,7 @@ const BalanceContent: React.FC<Props> = ({ balance = 0, cost = 0 }) => {
   return (
     <BalanceArea>
       <Balance>{balance}</Balance>
-      <Cost>${cost}</Cost>
+      <Cost>${cost.toFixed(2)}</Cost>
     </BalanceArea>
   );
 };

@@ -39,7 +39,7 @@ const BalanceControl: React.FC<Props> = ({ show, totalCost = 0, toggleBalance })
   return (
     <BalanceArea>
       <Title>Total Balance</Title>
-      <Cost>${totalCost}</Cost>
+      <Cost>${totalCost.toFixed(2)}</Cost>
       { show ? <HideIcon onClick={toggleBalance} /> : <ShowIcon onClick={toggleBalance} /> }
     </BalanceArea>
   );

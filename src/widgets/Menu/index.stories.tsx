@@ -34,7 +34,7 @@ export const Connected: React.FC = () => {
         profile={null}
         showBalancePanel={true}
         showBalanceContol={true}
-        totalCost={5320}
+        totalCost={235.49707355430002}
       >
         <div>
           <Heading as="h1" mb="8px">

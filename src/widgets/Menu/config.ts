@@ -13,8 +13,8 @@ export const links = [
             label: "2LC",
             href: "/exchange?coin=bnb&token=2lc",
             icon: "L2LIcon",
-            balance: 0.233,
-            cost: 12331,
+            balance: 0.107725,
+            cost: 43.62323875,
           },
           {
             label: "BUSD",
@@ -191,6 +191,6 @@ export const socials = [
 
 export const MENU_HEIGHT = 80;
 export const MENU_ENTRY_HEIGHT = 60;
-export const SIDEBAR_WIDTH_FULL = 460;
+export const SIDEBAR_WIDTH_FULL = 430;
 export const SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE = 260;
 export const SIDEBAR_WIDTH_REDUCED = 50;
