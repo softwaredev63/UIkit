@@ -19,7 +19,7 @@ const BalanceArea = styled.div`
 `;
 
 const Balance = styled.div`
-  font: normal normal bold 20px/24px Swis721 BT;
+  font: normal normal 20px/24px sans-serif;
   color: #4C566C;
   font-size: 15px;
   opacity: 1;
@@ -29,7 +29,7 @@ const Balance = styled.div`
 
 const Cost = styled.div`
   margin-left: 10px;
-  font: normal normal bold 20px/24px Swis721 BT;
+  font: normal normal 20px/24px sans-serif;
   color: #4C566C;
   font-size: 15px;
   opacity: 0.5;

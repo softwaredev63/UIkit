@@ -45,7 +45,7 @@ const HideArea = styled.div`
   width: 170px;
   text-align: center;
   vertical-align: middle;
-  font-weight: 900;
+  font-weight: 500;
   opacity: 0.5;
   margin-top: 10px;
   cursor: pointer;
