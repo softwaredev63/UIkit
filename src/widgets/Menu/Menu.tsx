@@ -3,6 +3,8 @@ import styled from "styled-components";
 import throttle from "lodash/throttle";
 import Overlay from "../../components/Overlay/Overlay";
 import { Flex } from "../../components/Flex";
+import CopyToClipboard from "../WalletModal/CopyToClipboard";
+import { Link, LinkExternal } from "../../components/Link";
 import { useMatchBreakpoints } from "../../hooks";
 import Logo from "./Logo";
 import SideBar from "./SideBar";
@@ -59,6 +61,19 @@ const MobileOnlyOverlay = styled(Overlay)`
   }
 `;
 
+const ContractLinkArea = styled(Flex)`
+  background: transparent linear-gradient(180deg, #53a8f0 0%, #2d7fc4 100%) 0% 0% no-repeat padding-box;
+  border-radius: 12px;
+  height: 46px;
+  padding: 10px;
+`
+
+const LinkString =  styled.div`
+  color: white;
+  font: normal normal bold 16px/6px Swis721 BT;
+  margin: auto;
+`
+
 const Menu: React.FC<NavProps> = ({
   account,
   login,
@@ -77,6 +92,8 @@ const Menu: React.FC<NavProps> = ({
   showBalancePanel = false,
   showBalanceContol = false,
   totalCost = 0,
+  showBuyButton = false,
+  showContractButton = false,
 }) => {
   const { isXl } = useMatchBreakpoints();
   const isMobile = isXl === false;
@@ -121,6 +138,8 @@ const Menu: React.FC<NavProps> = ({
   // Find the home link if provided
   const homeLink = links.find((link) => link.label === "Home");
 
+  const tokenAddress = '0x11f6ecc9e2658627e0876212f1078b9f84d3196e';
+
   return (
     <Wrapper>
       <StyledNav showMenu={showMenu}>
@@ -130,8 +149,17 @@ const Menu: React.FC<NavProps> = ({
           isDark={isDark}
           href={homeLink?.href ?? "https://2local.io/"}
         />
+        { showContractButton && 
+        <ContractLinkArea>
+          <LinkString>
+            2LC Contract
+          </LinkString>
+          <CopyToClipboard toCopy={tokenAddress} fill="#ffffff">
+            <LinkExternal small href={`https://bscscan.com/address/${tokenAddress}`} fill="#ffffff" />
+          </CopyToClipboard>
+        </ContractLinkArea> }
         <Flex>
-          <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} />
+          <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} showBuyButton={showBuyButton} />
           {profile && <Avatar profile={profile} />}
         </Flex>
       </StyledNav>

@@ -74,4 +74,6 @@ export interface NavProps extends PanelProps {
   showBalancePanel?: boolean;
   showBalanceContol?: boolean;
   totalCost?: number;
+  showBuyButton?: boolean;
+  showContractButton?: boolean;
 }
