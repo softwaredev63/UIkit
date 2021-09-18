@@ -5,16 +5,25 @@ export const links = [
     href: "/exchange",
     items: [
       {
-        label: "BNB",
+        label: "BEP20",
         href: "/exchange",
         icon: "BNBIcon",
+        balance: 0.107725,
+        cost: 43.62323875,
         items: [
+          {
+            label: "BNB",
+            href: "/exchange?coin=bnb&token=bnb",
+            icon: "BNBIcon",
+            balance: 217034000,
+            cost: 86812.60,
+          },
           {
             label: "2LC",
             href: "/exchange?coin=bnb&token=2lc",
             icon: "L2LIcon",
-            balance: 0.107725,
-            cost: 43.62323875,
+            balance: 217034000,
+            cost: 86812.60,
           },
           {
             label: "BUSD",
@@ -191,6 +200,6 @@ export const socials = [
 
 export const MENU_HEIGHT = 80;
 export const MENU_ENTRY_HEIGHT = 60;
-export const SIDEBAR_WIDTH_FULL = 430;
+export const SIDEBAR_WIDTH_FULL = 460;
 export const SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE = 260;
 export const SIDEBAR_WIDTH_REDUCED = 50;

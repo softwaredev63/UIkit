@@ -12,14 +12,14 @@ interface Props {
 }
 
 const BalanceArea = styled.div`
-  width: 140px;
+  width: 170px;
   margin: auto 10px;
   display: flex;
   flex-direction: row;
 `;
 
 const Balance = styled.div`
-  font: normal normal 20px/24px sans-serif;
+  font: normal normal 18px/24px sans-serif;
   color: #4C566C;
   font-size: 15px;
   opacity: 1;
@@ -29,7 +29,7 @@ const Balance = styled.div`
 
 const Cost = styled.div`
   margin-left: 10px;
-  font: normal normal 20px/24px sans-serif;
+  font: normal normal 18px/24px sans-serif;
   color: #4C566C;
   font-size: 15px;
   opacity: 0.5;
