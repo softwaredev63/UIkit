@@ -18,6 +18,7 @@ const getBottom = ({ position }: PositionProps) => {
 
 const DropdownContent = styled.div<{ position: Position }>`
   width: max-content;
+  min-width: 130px;
   display: none;
   flex-direction: column;
   position: absolute;
@@ -26,7 +27,7 @@ const DropdownContent = styled.div<{ position: Position }>`
   bottom: ${getBottom};
   background-color: ${({ theme }) => theme.nav.background};
   box-shadow: ${({ theme }) => theme.shadows.level1};
-  padding: 16px;
+  padding: 10px;
   max-height: 500px;
   overflow-y: auto;
   z-index: ${({ theme }) => theme.zIndices.dropdown};
