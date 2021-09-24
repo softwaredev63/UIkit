@@ -48,3 +48,4 @@ export { default as DiamondIcon } from "./Diamond";
 export { default as HideIcon } from "./Hide";
 export { default as ShowIcon } from "./Show";
 export { default as ExpandIcon } from "./Expand";
+export { default as BEP20Icon } from "./BEP20";

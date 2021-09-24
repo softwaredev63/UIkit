@@ -24,6 +24,8 @@ const LinkLabelSub = styled.div<{ isPushed: boolean }>`
   transition: color 0.4s;
   font: normal normal normal 12px/37px Swis721 BT;
   flex-grow: 1;
+  display: flex;
+  flex-direction: row;
 `;
 
 const MenuEntrySub = styled.div<Props>`

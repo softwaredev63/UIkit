@@ -56,6 +56,12 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, show
                 entry.items.map((item) => {
                   const IconSub = Icons[item.icon];
                   const iconElementSub = <IconSub width="20px" mr="8px" />;
+                  let coinString = ""
+                  if (item.coin) {
+                    coinString = (item.coin).concat('Icon')
+                  }
+                  const CoinSub = Icons[coinString]
+                  const coinElementSub = <CoinSub width="20px" ml="8px" />;
                   const itemCalloutClass = item.calloutClass ? item.calloutClass : undefined;
                   if (item.items) {
                     return (
@@ -70,10 +76,18 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, show
                         label={item.label}
                         initialOpenState={item.initialOpenState}
                         className={itemCalloutClass}
+                        coin={item.coin ? coinElementSub : ''}
                       >
                         {item.items.map((subItem) => {
                           const IconSubSub = Icons[subItem.icon];
                           const iconElementSubSub = <IconSubSub width="20px" mr="8px" />;
+                          let coinStringSub = ""
+                          if (subItem.coin) {
+                            coinStringSub = (subItem.coin).concat('Icon')
+                            console.log("pooh, coinString = ", coinStringSub)
+                          }
+                          const CoinSubSub = Icons[coinStringSub];
+                          const coinElementSubSub = <CoinSubSub width="20px" ml="8px" />;
                           const itemSubCalloutClass = item.calloutClass ? item.calloutClass : undefined;
                           return (
                             <MenuEntrySubSub
@@ -86,7 +100,7 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, show
                             >
                               <MenuLink href={subItem.href}>
                                 {iconElementSubSub}
-                                <LinkLabelSub isPushed={isPushed}>{subItem.label}</LinkLabelSub>
+                                <LinkLabelSub isPushed={isPushed}>{subItem.label}{subItem.coin ? coinElementSubSub : ''}</LinkLabelSub>
                                 {showBalance && <BalanceContent balance={subItem.balance} cost={subItem.cost}/>}
                               </MenuLink>
                             </MenuEntrySubSub>

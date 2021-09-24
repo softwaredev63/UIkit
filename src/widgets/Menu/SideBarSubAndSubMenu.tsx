@@ -15,6 +15,7 @@ interface Props extends PushedProps {
   showBalance?: boolean;
   balance?: number;
   cost?: number;
+  coin?: React.ReactElement | string;
 }
 
 const Container = styled.div`
@@ -53,6 +54,7 @@ const SideBarSubAndSubMenu: React.FC<Props> = ({
   showBalance = false,
   balance,
   cost,
+  coin = undefined,
 }) => {
   const [isOpen, setIsOpen] = useState(initialOpenState);
 
@@ -70,7 +72,11 @@ const SideBarSubAndSubMenu: React.FC<Props> = ({
       <MainContainer>
         <MenuEntrySub onClick={handleClick} className={className} showBalance={showBalance}>
           {icon}
-          <LinkLabelSub isPushed={isPushed}>{label}</LinkLabelSub>
+          <LinkLabelSub isPushed={isPushed}>
+            {label}
+            {coin}
+          </LinkLabelSub>
+
           {isOpen ? <ArrowDropUpIcon width="30px" /> : <ArrowDropDownIcon width="30px" />}      
         </MenuEntrySub>
         {showBalance && <BalanceContent balance={balance} cost={cost} />}

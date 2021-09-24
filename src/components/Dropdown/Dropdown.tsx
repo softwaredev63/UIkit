@@ -18,7 +18,7 @@ const getBottom = ({ position }: PositionProps) => {
 
 const DropdownContent = styled.div<{ position: Position }>`
   width: max-content;
-  min-width: 130px;
+  min-width: 150px;
   display: none;
   flex-direction: column;
   position: absolute;

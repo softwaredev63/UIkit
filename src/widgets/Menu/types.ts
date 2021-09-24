@@ -33,6 +33,7 @@ export interface MenuSubEntry {
   disabled?: boolean;
   balance?: number;
   cost?: number;
+  coin?: string;
 }
 
 export interface MenuSubSubEntry {
@@ -43,6 +44,7 @@ export interface MenuSubSubEntry {
   disabled?: boolean;
   balance?: number;
   cost?: number;
+  coin?: string;
 }
 
 export interface MenuEntry {
