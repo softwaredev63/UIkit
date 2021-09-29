@@ -84,7 +84,6 @@ const SideBarBody: React.FC<Props> = ({ isPushed, pushNav, isMobile, links, show
                           let coinStringSub = ""
                           if (subItem.coin) {
                             coinStringSub = (subItem.coin).concat('Icon')
-                            console.log("pooh, coinString = ", coinStringSub)
                           }
                           const CoinSubSub = Icons[coinStringSub];
                           const coinElementSubSub = <CoinSubSub width="20px" ml="8px" />;

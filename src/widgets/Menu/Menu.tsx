@@ -10,6 +10,7 @@ import Logo from "./Logo";
 import SideBar from "./SideBar";
 import NavBar from "./NavBar";
 import UserBlock from "./UserBlock";
+import ContractViewMenu from "./ContractViewMenu";
 import { NavProps } from "./types";
 import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL, SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE } from "./config";
 import Avatar from "./Avatar";
@@ -50,6 +51,7 @@ const Inner = styled.div<{ isPushed: boolean; showMenu: boolean, showBalance: bo
   ${({ theme }) => theme.mediaQueries.nav} {
     margin-left: ${({ isPushed, showBalance }) => `${isPushed ? (showBalance ? SIDEBAR_WIDTH_FULL : SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE) + 20 : SIDEBAR_WIDTH_REDUCED + 20}px`};
   }
+  width: 100%;
 `;
 
 const MobileOnlyOverlay = styled(Overlay)`
@@ -60,19 +62,6 @@ const MobileOnlyOverlay = styled(Overlay)`
     display: none;
   }
 `;
-
-const ContractLinkArea = styled(Flex)`
-  background: transparent linear-gradient(180deg, #53a8f0 0%, #2d7fc4 100%) 0% 0% no-repeat padding-box;
-  border-radius: 12px;
-  height: 46px;
-  padding: 10px;
-`
-
-const LinkString =  styled.div`
-  color: white;
-  font: normal normal bold 16px/6px Swis721 BT;
-  margin: auto;
-`
 
 const Menu: React.FC<NavProps> = ({
   account,
@@ -149,22 +138,18 @@ const Menu: React.FC<NavProps> = ({
           isDark={isDark}
           href={homeLink?.href ?? "https://2local.io/"}
         />
-        { showContractButton && 
-        <ContractLinkArea>
-          <LinkString>
-            2LC Contract
-          </LinkString>
-          <CopyToClipboard toCopy={tokenAddress} fill="#ffffff">
-            <LinkExternal small href={`https://bscscan.com/address/${tokenAddress}`} fill="#ffffff" />
-          </CopyToClipboard>
-        </ContractLinkArea> }
+        { showContractButton && !isMobile && <ContractViewMenu token={tokenAddress} /> }
         <Flex>
-          <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} showBuyButton={showBuyButton} />
+          <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} showBuyButton={showBuyButton} isMobile={isMobile} />
           {profile && <Avatar profile={profile} />}
         </Flex>
       </StyledNav>
       <BodyWrapper>
         <SideBar
+          login={login}
+          logout={logout}
+          account={account}
+          onBuyCryptoWithSimplex={onBuyCryptoWithSimplex}
           isPushed={isPushed}
           isMobile={isMobile}
           showMenu={showMenu}
@@ -181,6 +166,9 @@ const Menu: React.FC<NavProps> = ({
           totalCost={totalCost}
           toggleBalance={toggleBalance}
           showBalanceContol={showBalanceContol}
+          showContractButton={showBalanceContol}
+          showBuyButton={showBalanceContol}
+          token={tokenAddress}
         />
         <Inner isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
           {children}
