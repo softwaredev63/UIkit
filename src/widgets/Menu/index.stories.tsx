@@ -35,6 +35,8 @@ export const Connected: React.FC = () => {
         showBalancePanel={true}
         showBalanceContol={true}
         totalCost={235.49707355430002}
+        showBuyButton={true}
+        showContractButton={true}
       >
         <div>
           <Heading as="h1" mb="8px">
