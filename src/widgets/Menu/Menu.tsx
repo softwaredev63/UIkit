@@ -166,8 +166,8 @@ const Menu: React.FC<NavProps> = ({
           totalCost={totalCost}
           toggleBalance={toggleBalance}
           showBalanceContol={showBalanceContol}
-          showContractButton={showBalanceContol}
-          showBuyButton={showBalanceContol}
+          showContractButton={showContractButton}
+          showBuyButton={showBuyButton}
           token={tokenAddress}
         />
         <Inner isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
