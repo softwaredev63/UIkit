@@ -83,6 +83,8 @@ const Menu: React.FC<NavProps> = ({
   totalCost = 0,
   showBuyButton = false,
   showContractButton = false,
+  showHowButton = false,
+  onAddToken,
 }) => {
   const { isXl } = useMatchBreakpoints();
   const isMobile = isXl === false;
@@ -140,7 +142,7 @@ const Menu: React.FC<NavProps> = ({
         />
         { showContractButton && !isMobile && <ContractViewMenu token={tokenAddress} /> }
         <Flex>
-          <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} showBuyButton={showBuyButton} isMobile={isMobile} />
+          <UserBlock account={account} login={login} logout={logout} onBuyCryptoWithSimplex={onBuyCryptoWithSimplex} showBuyButton={showBuyButton} isMobile={isMobile} showHowButton={showHowButton} onAddToken={onAddToken} />
           {profile && <Avatar profile={profile} />}
         </Flex>
       </StyledNav>
@@ -169,6 +171,8 @@ const Menu: React.FC<NavProps> = ({
           showContractButton={showContractButton}
           showBuyButton={showBuyButton}
           token={tokenAddress}
+          showHowButton={showHowButton}
+          onAddToken={onAddToken}
         />
         <Inner isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
           {children}

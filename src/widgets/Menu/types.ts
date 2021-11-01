@@ -78,4 +78,6 @@ export interface NavProps extends PanelProps {
   totalCost?: number;
   showBuyButton?: boolean;
   showContractButton?: boolean;
+  showHowButton?: boolean;
+  onAddToken: () => void;
 }

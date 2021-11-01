@@ -10,7 +10,7 @@ const ContractLinkArea = styled(Flex)`
   padding: 10px;
   background: #DF642B33 0% 0% no-repeat padding-box;
   border-radius: 12px;
-  max-width: ${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE}px;
+  max-width: ${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE - 20}px;
   margin: auto 10px;
 `
 

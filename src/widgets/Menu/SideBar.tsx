@@ -25,6 +25,8 @@ interface Props extends PanelProps, PushedProps {
   logout: () => void;
   onBuyCryptoWithSimplex: () => void;
   token: string;
+  showHowButton: boolean;
+  onAddToken: () => void;
 }
 
 const StyledSideBar = styled.div<{ isPushed: boolean; showMenu: boolean, showBalance: boolean }>`
@@ -68,14 +70,44 @@ const StyledButton = styled(Button)`
   width: 115px;
 `;
 
+const StyledConnectButton = styled(StyledButton)`
+  width: ${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE - 20}px;
+`;
+
 const StyledFlex = styled(Flex)`
   margin: 10px;
   justify-content: space-between;
   width: ${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE - 20}px;
 `
 
+const AddButton = styled(Button)`
+  background: transparent;
+  font: normal normal bold 16px/16px Swis721 BT;
+  height: 36px;
+  padding: 10px;
+  color: #DF642B;
+  border: 1px solid #DF642B;
+  border-radius: 6px;
+  width: ${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE - 20}px;
+  margin: auto 10px;
+  margin-bottom:
+  text-align: center;
+`
+
+const StyledHowButton = styled.a`
+  background: transparent;
+  font: normal normal bold 16px/16px Swis721 BT;
+  height: 36px;
+  padding: 10px;
+  color: #DF642B;
+  border: 1px solid #DF642B;
+  border-radius: 6px;
+  width: ${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE - 20}px;
+  margin: auto 10px;
+`
+
 const SideBar: React.FC<Props> = (props) => {
-  const { isPushed, showMenu, showBalance, showBalanceContol, toggleBalance, totalCost, showContractButton, showBuyButton, account, login, logout, onBuyCryptoWithSimplex, token, isMobile } = props;
+  const { isPushed, showMenu, showBalance, showBalanceContol, toggleBalance, totalCost, showContractButton, showBuyButton, account, login, logout, onBuyCryptoWithSimplex, token, isMobile, onAddToken, showHowButton } = props;
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(login, logout, account);
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null;
 
@@ -106,16 +138,35 @@ const SideBar: React.FC<Props> = (props) => {
           </StyledButton>
         }
         { isMobile && !account &&
-          <StyledButton
+          <StyledConnectButton
             size="sm"
             onClick={() => {
               onPresentConnectModal();
             }}
           >
             Connect Wallet
-          </StyledButton>
+          </StyledConnectButton>
         }
       </StyledFlex>
+      { isMobile && account && 
+        <AddButton
+          size="sm"
+          variant="tertiary"
+          onClick={() => {
+            onAddToken();
+          }}
+        >
+          Add 2LC to MetaMask
+        </AddButton>
+      }
+      { isMobile && showHowButton && 
+        <StyledHowButton
+          href="https://metamask.2local.io"
+          target="_blank"
+        >
+          How
+        </StyledHowButton>
+      }
       { showBalanceContol && <BalanceControl show={showBalance} totalCost={totalCost} toggleBalance={toggleBalance}/> }
       <SideBarBody {...props} />
     </StyledSideBar>

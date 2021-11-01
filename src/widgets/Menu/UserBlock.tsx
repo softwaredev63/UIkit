@@ -42,13 +42,34 @@ interface Props {
   onBuyCryptoWithSimplex: () => void;
   showBuyButton: boolean;
   isMobile: boolean;
+  showHowButton: boolean;
+  onAddToken: () => void;
 }
 
-const UserBlock: React.FC<Props> = ({ account, login, logout, onBuyCryptoWithSimplex, showBuyButton, isMobile }) => {
+const UserBlock: React.FC<Props> = ({ account, login, logout, onBuyCryptoWithSimplex, showBuyButton, isMobile, showHowButton, onAddToken }) => {
   const { onPresentConnectModal, onPresentAccountModal } = useWalletModal(login, logout, account);
   const accountEllipsis = account ? `${account.substring(0, 4)}...${account.substring(account.length - 4)}` : null;
   return (
     <div>
+      { !isMobile && account && 
+        <StyledButton
+          size="sm"
+          variant="tertiary"
+          onClick={() => {
+            onAddToken();
+          }}
+        >
+          Add 2LC to MetaMask
+        </StyledButton>
+      }
+      { !isMobile && showHowButton && 
+        <StyledLink
+          href="https://metamask.2local.io"
+          target="_blank"
+        >
+          How
+        </StyledLink>
+      }
       { !isMobile && showBuyButton &&
       <StyledButton
           size="sm"
