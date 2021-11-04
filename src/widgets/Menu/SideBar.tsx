@@ -104,6 +104,8 @@ const StyledHowButton = styled.a`
   border-radius: 6px;
   width: ${SIDEBAR_WIDTH_FULL_WITHOUT_BALANCE - 20}px;
   margin: auto 10px;
+  text-align: center;
+  margin-top: 10px;
 `
 
 const SideBar: React.FC<Props> = (props) => {
