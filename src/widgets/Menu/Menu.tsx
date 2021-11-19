@@ -63,6 +63,13 @@ const MobileOnlyOverlay = styled(Overlay)`
   }
 `;
 
+const WarningFlex = styled(Flex)`
+  width: 100%;
+  justify-content: flex-end;
+  color: #e4642b;
+  font-size: 18px;
+`
+
 const Menu: React.FC<NavProps> = ({
   account,
   login,
@@ -175,6 +182,7 @@ const Menu: React.FC<NavProps> = ({
           onAddToken={onAddToken}
         />
         <Inner isPushed={isPushed} showMenu={showMenu} showBalance={showBalance} >
+          <WarningFlex>Due to a security breach we are replacing wallets, in the process balances will appear 0.</WarningFlex>
           {children}
         </Inner>
         <MobileOnlyOverlay show={isPushed} onClick={() => setIsPushed(false)} role="presentation" />
