@@ -66,8 +66,9 @@ const MobileOnlyOverlay = styled(Overlay)`
 const WarningFlex = styled(Flex)`
   width: 100%;
   justify-content: flex-end;
-  color: #e4642b;
+  color: red;
   font-size: 18px;
+  margin-right: 100px;
 `
 
 const Menu: React.FC<NavProps> = ({

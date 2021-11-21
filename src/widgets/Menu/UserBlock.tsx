@@ -62,14 +62,6 @@ const UserBlock: React.FC<Props> = ({ account, login, logout, onBuyCryptoWithSim
           Add 2LC to MetaMask
         </StyledButton>
       }
-      { !isMobile && showHowButton && 
-        <StyledLink
-          href="https://metamask.2local.io"
-          target="_blank"
-        >
-          How
-        </StyledLink>
-      }
       { !isMobile && showBuyButton &&
       <StyledButton
           size="sm"
@@ -100,6 +92,14 @@ const UserBlock: React.FC<Props> = ({ account, login, logout, onBuyCryptoWithSim
         >
           Connect Wallet
         </StyledButton>
+      }
+      { !isMobile && showHowButton && 
+        <StyledLink
+          href="https://metamask.2local.io"
+          target="_blank"
+        >
+          How?
+        </StyledLink>
       }
       <StyledLink
         href="https://sec.2local.io/login"
